@@ -2,6 +2,8 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const path = require('path');
+const copydir = require('copy-dir');
 
 module.exports = class extends Generator {
   prompting() {
@@ -12,10 +14,10 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+          type: 'input',
+          name: 'projectName',
+          message: 'Please input project name (weapp):',
+          default: 'weapp'
       }
     ];
 
