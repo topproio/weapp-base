@@ -7,7 +7,10 @@ First, install [Yeoman](http://yeoman.io) and generator-weapp-base using [npm](h
 
 ```bash
 npm install -g yo
-npm install -g generator-weapp-base
+
+git clone https://github.com/topproio/weapp-base.git
+
+npm link  //将拉下来得仓库代码链接到本地的全局环境，类似于npm install -g **
 ```
 
 Then generate your new project:
