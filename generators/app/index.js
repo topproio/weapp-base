@@ -17,26 +17,6 @@ module.exports = class extends Generator {
                 name: 'projectName',
                 message: 'Please input project name (weapp):',
                 default: 'weapp'
-            },
-            {
-                type: 'confirm',
-                name: 'ui',
-                message: 'Use UI Library to your project?'
-            },
-            {
-                name: 'uiLibrary',
-                type: 'list',
-                message: 'Please choose UI library:',
-                when(answers) {
-                    return answers.ui;
-                },
-                choices: ['weui', 'Wa-UI']
-            },
-            {
-                type: 'list',
-                name: 'jsTool',
-                message: 'Please choose js tool library:',
-                choices: ['lodash', 'underscore']
             }
         ];
 
@@ -60,25 +40,6 @@ module.exports = class extends Generator {
     writing() {
         const changeFiles = ['package.json']; // 记录被修改的文件
         const pkg = this.fs.readJSON(this.templatePath('package.json'), {});
-
-        if (this.props.uiLibrary && this.props.uiLibrary === 'weui') { // Package.json 添加安装包定义
-
-        } else if (this.props.uiLibrary === 'Wa-UI') {
-
-        }
-
-        // 用户选择 js tool
-        if (this.props.jsTool) {
-            util.copyTpl.apply(this, ['src/main_tpl.js', 'src/main.js', this.props]);
-            if (changeFiles.indexOf('main.js') === -1) {
-                changeFiles.push('main.js');
-            }
-            if (this.props.jsTool === 'lodash') {
-                pkg.dependencies.lodash = '4.17.11';
-            } else if (this.props.jsTool === 'underscore') {
-                pkg.dependencies.underscore = '1.9.1';
-            }
-        }
 
         // 拷贝指定目录到目标位置
         copydir.sync(this.templatePath(), this.destinationPath(), function (stat,
