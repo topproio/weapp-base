@@ -1,40 +1,73 @@
 'use strict';
+
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 const copydir = require('copy-dir');
+const util = require('./util');
 
 module.exports = class extends Generator {
-  prompting() {
-    // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the extraordinary ${chalk.red('generator-weapp-base')} generator!`)
-    );
+    prompting() { // Have Yeoman greet the user.
+        this.log(yosay(`Welcome to the extraordinary ${chalk.red('generator-weapp-base')} generator!`));
 
-    const prompts = [
-      {
-          type: 'input',
-          name: 'projectName',
-          message: 'Please input project name (weapp):',
-          default: 'weapp'
-      }
-    ];
+        const prompts = [
+            {
+                type: 'input',
+                name: 'projectName',
+                message: 'Please input project name (weapp):',
+                default: 'weapp'
+            }
+        ];
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
-  }
+        return this.prompt(prompts).then(props => {
+            this.props = props; // To access props later use this.props.someAnswer;
+        });
+    }
 
-  writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  }
+    defaults() { // 检查当前目录是否和用户定义的projectName一致
+        if (path.basename(this.destinationPath()) !== this.props.projectName) {
+            this.log('Your generator must be inside a folder named ' +
+        this.props.projectName +
+        '\n' +
+        "I'll automatically create this folder.");
 
-  install() {
-    this.installDependencies();
-  }
+            // 创建文新件夹
+            this.destinationRoot(this.destinationPath(this.props.projectName));
+        }
+    }
+
+    writing() {
+        const changeFiles = ['package.json']; // 记录被修改的文件
+        const pkg = this.fs.readJSON(this.templatePath('package.json'), {});
+
+        // 拷贝指定目录到目标位置
+        copydir.sync(this.templatePath(), this.destinationPath(), function (stat,
+            filepath,
+            filename) {
+            const extendName = path.extname(filename);
+
+            // _tpl结尾的为自定义模板，不需要拷贝到框架中
+            if (filename && path.basename(filename, extendName).endsWith('_tpl')) {
+                return false;
+            }
+
+            // 被改动的文件不需要重新被拷贝
+            if (changeFiles.indexOf(filename) > -1) {
+                return false;
+            }
+
+            return true;
+        });
+
+        // 修改包名
+        pkg.name = this.props.projectName;
+
+        // 修改package.json
+        this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    }
+
+    // install() {
+    //     this.installDependencies();
+    // }
 };
