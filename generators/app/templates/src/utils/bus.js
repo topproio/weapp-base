@@ -40,5 +40,7 @@ class Bus {
     }
 }
 
+module.exports = {
+    bus: Bus.getInstance()
+};
 
-export default Bus.getInstance();

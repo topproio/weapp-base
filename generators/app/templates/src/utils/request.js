@@ -38,4 +38,7 @@ class SafeRequest {
     }
 }
 
-export default SafeRequest.getInstance();
+module.exports = {
+    SafeRequest: SafeRequest.getInstance()
+};
+
