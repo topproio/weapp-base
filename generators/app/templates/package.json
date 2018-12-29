@@ -9,12 +9,6 @@
     "lint": "gulp build:lint",
     "husky:update": "node node_modules/husky/lib/installer/bin install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -8,7 +8,7 @@ const copydir = require('copy-dir');
 const util = require('./util');
 
 module.exports = class extends Generator {
-    prompting() { // Have Yeoman greet the user.
+    prompting() { 
         this.log(yosay(`Welcome to the extraordinary ${chalk.red('generator-weapp-base')} generator!`));
 
         const prompts = [
@@ -21,16 +21,13 @@ module.exports = class extends Generator {
         ];
 
         return this.prompt(prompts).then(props => {
-            this.props = props; // To access props later use this.props.someAnswer;
+            this.props = props;
         });
     }
 
-    defaults() { // 检查当前目录是否和用户定义的projectName一致
+    defaults() { 
         if (path.basename(this.destinationPath()) !== this.props.projectName) {
-            this.log('Your generator must be inside a folder named ' +
-        this.props.projectName +
-        '\n' +
-        "I'll automatically create this folder.");
+            this.log('It will create ' + this.props.projectName + ' later');
 
             // 创建文新件夹
             this.destinationRoot(this.destinationPath(this.props.projectName));
@@ -67,7 +64,4 @@ module.exports = class extends Generator {
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
 
-    // install() {
-    //     this.installDependencies();
-    // }
 };
