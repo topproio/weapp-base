@@ -1,6 +1,6 @@
 # weapp-base
 
-> A Wi App
+> A Weixin App
 
 ## Build Setup
 

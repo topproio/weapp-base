@@ -1,19 +1,13 @@
 {
   "name": "weapp-base",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A weixin app",
+  "main": "src/app.js",
   "scripts": {
     "build": "gulp",
     "dev": "gulp watch",
     "lint": "gulp build:lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "husky:update": "node node_modules/husky/lib/installer/bin install"
   },
   "keywords": [],
   "author": "",

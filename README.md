@@ -1,68 +1,69 @@
-# generator-weapp-base [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> 
+# generator-weapp-base
+[![npm](https://img.shields.io/badge/license-MIT-yellowgreen.svg)]()
+[![npm](https://img.shields.io/badge/node-%3E%3D8-blue.svg)]()
+[![npm](https://img.shields.io/badge/npm-5.6.0-orange.svg)]()
+[![npm](https://img.shields.io/badge/yeoman-2.0.5-brightgreen.svg)]()
+> Weixin app scaffolding based on Yeoman.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-weapp-base using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
 ```bash
 npm install -g yo
-
-git clone https://github.com/topproio/weapp-base.git
-
-npm link  //将拉下来得仓库代码链接到本地的全局环境，类似于npm install -g 
-
-基础代码已包含:
-封装的http server --util/request.js
-数据传递工具 bus --util/bus.js
 ```
 
-Then generate your new project:
+And then:
 
 ```bash
-1. 执行 'yo weapp-base'
-2. 根据提示定义工程名
-
-按照提示步骤完成后，执行'git init' 然后 'npm install'
-(！！！'git init'操作一定要在'npm install'步骤之前，这个和husky 获取git 钩子有关，如果没按照这个顺序，删掉node-modules包，重新安装)
-
-
-```
-注意事项,用户要全局安装以下命令
-
-```bash
-//git commit 规范化工具，配合'husky'一起使用,'husky'前面已配置
-1. 'npm install -g @commitlint/cli @commitlint/config-conventional'
-2. 安装完毕后，每次提交代码会自动检查提交格式 exp：'git commit -m "feat: 新功能"';类型关键字和msg 之间要有空格。
-
-提交类型:
-feat: adds a new feature to your application or library
-fix: represents a bug fix for your application
-docs: document change
-style: changes that do not affect the meaning of the code
-refactor: a code change that neither fixes a bug or adds a feature
-perf: a code change that imporves performance
-test: adding missing tests
-
+git clone git@github.com:topproio/weapp-base.git
 ```
 
-## Getting To Know Yeoman
+Add the template of the repo to Yeoman's list through `npm link`.
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+```
+cd weapp-base
+npm link
+```
 
-## License
+Then generate your vue project in new folder:
 
-MIT © [tina0035]()
+```
+yo
+...
+```
 
+### How to start Vue project?
 
-[npm-image]: https://badge.fury.io/js/generator-weapp-base.svg
-[npm-url]: https://npmjs.org/package/generator-weapp-base
-[travis-image]: https://travis-ci.org//generator-weapp-base.svg?branch=master
-[travis-url]: https://travis-ci.org//generator-weapp-base
-[daviddm-image]: https://david-dm.org//generator-weapp-base.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org//generator-weapp-base
-[coveralls-image]: https://coveralls.io/repos//generator-weapp-base/badge.svg
-[coveralls-url]: https://coveralls.io/r//generator-weapp-base
+Goto the root directory, and run
+
+```
+npm install
+```
+
+Then run `husky:update` after `git init`
+
+```
+npm run husky:update
+```
+
+Developing Happy
+
+```
+npm run dev
+```
+
+## Configuration
+
+### UI framework
+
+1. [elementUI](http://element-cn.eleme.io/#/zh-CN/component/installation)
+2. [iView](https://www.iviewui.com/docs/guide/install)
+
+### Data store
+
+    Bus (utils/bus.js)
+
+### Utils
+
+1. [Lodash](https://lodash.com/docs/4.17.10)
+2. [Underscore](https://underscorejs.org/)
+
