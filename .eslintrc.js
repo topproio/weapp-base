@@ -6,7 +6,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "linebreak-style": [2, "windows"]
+        
     }
 };
 
