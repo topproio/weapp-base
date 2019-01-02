@@ -17,6 +17,12 @@ module.exports = class extends Generator {
                 name: 'projectName',
                 message: 'Please input project name (weapp):',
                 default: 'weapp'
+            },
+            {
+                type: 'list',
+                name: 'uiLibrary',
+                message: 'Please choose UI library:',
+                choices: ['weui', 'no need']
             }
         ];
 
@@ -37,6 +43,11 @@ module.exports = class extends Generator {
     writing() {
         const changeFiles = ['package.json']; // 记录被修改的文件
         const pkg = this.fs.readJSON(this.templatePath('package.json'), {});
+
+        util.copyTpl.apply(this, ['src/app_tpl.js', 'src/app.js', this.props]);
+        if (this.props.uiLibrary === 'weui') {
+            copydir.sync(this.templatePath('src/style_tpl'), this.destinationPath('src/style'));
+        }
 
         // 拷贝指定目录到目标位置
         copydir.sync(this.templatePath(), this.destinationPath(), function (stat,
