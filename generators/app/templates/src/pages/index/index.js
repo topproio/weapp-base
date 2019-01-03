@@ -10,20 +10,20 @@ Page({
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        movies:[{
-            id:0,
-            ariginal_title: "来电狂响",
+        movies: [{
+            id: 0,
+            ariginal_title: '来电狂响',
             average: 6,
             directors_name: '于淼',
-            images:{
-                small: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.jpg",
-                large:  "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.jpg"
+            images: {
+                small: 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.jpg',
+                large: 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.jpg'
             },
-            title: "来电狂响",
-            year: "2018"
-            
+            title: '来电狂响',
+            year: '2018'
+
         }],
-        hasMore:false
+        hasMore: false
 
     },
 
