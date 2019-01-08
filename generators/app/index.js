@@ -44,9 +44,13 @@ module.exports = class extends Generator {
         const changeFiles = ['package.json']; // 记录被修改的文件
         const pkg = this.fs.readJSON(this.templatePath('package.json'), {});
 
-        util.copyTpl.apply(this, ['src/app_tpl.js', 'src/app.js', this.props]);
         if (this.props.uiLibrary === 'weui') {
+            util.copyTpl.apply(this, ['src/app_tpl.wxss', 'src/app.wxss', this.props]);
             copydir.sync(this.templatePath('src/style_tpl'), this.destinationPath('src/style'));
+        }
+
+        if (changeFiles.indexOf('app.wxss') === -1) {
+            changeFiles.push('app.wxss');
         }
 
         // 拷贝指定目录到目标位置
