@@ -1,6 +1,6 @@
 # weapp-base
 
-> A Weixin App
+> A standard template for weixin app.
 
 ## Build Setup
 
@@ -8,16 +8,13 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# start devloping
 npm run dev
 
-# build for production with minification
+# building
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
+## Commitlint rules
 
-
-## Change log
+Please read [commitlint-config-toppro](https://www.npmjs.com/package/commitlint-config-toppro)

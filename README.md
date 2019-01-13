@@ -55,15 +55,5 @@ npm run dev
 
 ### UI framework
 
-1. [elementUI](http://element-cn.eleme.io/#/zh-CN/component/installation)
-2. [iView](https://www.iviewui.com/docs/guide/install)
-
-### Data store
-
-    Bus (utils/bus.js)
-
-### Utils
-
-1. [Lodash](https://lodash.com/docs/4.17.10)
-2. [Underscore](https://underscorejs.org/)
+1. [Tencent/weui](https://github.com/Tencent/weui)
 
