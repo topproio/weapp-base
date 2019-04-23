@@ -23,6 +23,12 @@ module.exports = class extends Generator {
                 name: 'uiLibrary',
                 message: 'Please choose UI library:',
                 choices: ['weui', 'no need']
+            },
+            {
+                type: 'list',
+                name: 'promiseLibrary',
+                message: 'Please choose Promise library [Async/Await(a),Promise(b)]:',
+                choices: ['a', 'b']
             }
         ];
 
@@ -47,6 +53,10 @@ module.exports = class extends Generator {
         if (this.props.uiLibrary === 'weui') {
             util.copyTpl.apply(this, ['src/app_tpl.wxss', 'src/app.wxss', this.props]);
             copydir.sync(this.templatePath('src/style_tpl'), this.destinationPath('src/style'));
+        }
+
+        if (this.props.promiseLibrary === 'a') {
+            util.copyTpl.apply(this, ['src/plugins/regenerator-runtime_tpl.js', 'src/plugins/regenerator-runtime.js', this.props]);
         }
 
         if (changeFiles.indexOf('app.wxss') === -1) {
