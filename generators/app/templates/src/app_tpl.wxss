@@ -1,8 +1,4 @@
 
-<% if(uiLibrary === 'weui'){ %>
-@import 'style/weui.wxss';
-<% } %>
-/**app.wxss**/
 .container {
   height: 100%;
   display: flex;
